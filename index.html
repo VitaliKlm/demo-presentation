@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>demo-presentation</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h2>How Browsers Load and Display Webpages</h2>
+          <br>
+          <p>Created by Vitali Klimza(<a href="https://github.com/VitaliKlm">VitaliKlm</a>)</p>
+        </section>
+				<section>
+          <h3>what happens after the browser receives the web page address? </h3>
+          <ul>
+            <li>establishing a connection to the server</li>
+            <li>transferring data and receiving html document</li>
+            <li>parsing and displaying the received document</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h3>getting the IP address of the server</h3>
+            <ul style="font-size: 26px;">
+              <li>URL-address is converted to an IP-address</li>
+              <li>browser looks for an IP in the cache</li>
+              <li>browser connects to the DNS server to get IP</li>
+            </ul>
+            <br>
+            <img src="./examples/assets/url-to-ip.png" alt="url-to-ip">
+          </section>
+          <section>
+            <h3>DNS Lookup</h3>
+            <p style="font-size: 26px;">DNS (Domain Name System) - is a decentralized naming system for computers, services, or other resources connected to the Internet or a private network.</p>
+            <img src="./examples/assets/dns.jpg" alt="DNS" style="height: 450px;">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Connecting</h3>
+            <li style="font-size: 26px;">Browser connects to the server via TCP</li>
+            <li style="font-size: 26px;">TCP (Transmission Control Protocol)</li>
+            <li style="font-size: 26px;">System of "three-way handshake"</li>
+            <img src="./examples/assets/tcp-handshake.jpg" alt="tcp-handshake" style="height: 450px;">
+          </section>
+          <section>
+            <h3>HTTPS protocol</h3>
+            <li style="font-size: 26px;">HTTPS uses encryption, and a special certificate confirms the security of the connection</li>
+            <img src="./examples/assets/https-handshake.jpg" alt="tcp-handshake" style="height: 450px;">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>HTTP request</h3>
+            <li style="font-size: 26px;">Client side sends a request to the server</li>
+            <li style="font-size: 26px;">Request message contains the address that you are trying to reach</li>
+            <li style="font-size: 26px;">Request message specifies the data type of the response</li>
+            <img src="./examples/assets/HTTP-Request.jpg" alt="HTTP-Request" style="height: 350px;">
+          </section>
+          <section>
+            <h3>Server request processing</h3>
+            <li style="font-size: 26px;">web server (Apache HTTP Server, NGINX)</li>
+            <img src="./examples/assets/web-server.jpg" alt="web-server" style="height: 450px;">
+          </section>
+          <section>
+            <h3>HTTP response</h3>
+            <li style="font-size: 30px;">Server sends the data to the browser</li>
+            <li style="font-size: 30px; line-height: 70px;">Client get response status code:</li>
+            <ol style="font-size: 26px;">
+              <li>Informational responses (100–199)</li>
+              <li>Successful responses (200–299)</li>
+              <li>Redirects (300–399)</li>
+              <li>Client errors (400–499)</li>
+              <li>Server errors (500–599)</li>
+            </ol>
+          </section>
+          <section>
+            <h3>Dev tools HTTP response example</h3>
+            <li style="font-size: 26px;">server sent data in small packets</li>
+            <img src="./examples/assets/dev-tools.JPG" alt="dev-tools" style="height: 450px;">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Parsing </h3>
+            <p>Parsing steps include</p>
+            <ul>
+              <li>Building the DOM</li>
+              <li>Building the CSSOM</li>
+              <li>Preload scanner</li>
+            </ul>
+          </section>
+          <section>
+            <h3>result - hierarchal structures (trees)</h3>
+            <img src="./examples/assets/DOM.jpg" alt="DOM" style="width: 500px;">
+            <img src="./examples/assets/CSSOM.jpg" alt="CSSOM" style="width: 500px;">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Render</h3>
+            <p>Rendering steps include</p>
+            <ul>
+              <li>style</li>
+              <li>layout</li>
+              <li>paint</li>
+              <li>compositing</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Style</h3>
+            <li style="font-size: 26px;">DOM and CSSOM are combined in a render tree</li>
+            <img src="./examples/assets/render-tree.png" alt="">
+          </section>
+          <section>
+            <h3>Layout</h3>
+            <li style="font-size: 26px;">determination of the size and position of each object on the page</li>
+            <img src="./examples/assets/layout-visual.gif" alt="layout">
+          </section>
+          <section>
+            <h3>Paint</h3>
+            <li style="font-size: 26px;">browser converts each box calculated in the layout phase to pixels on the screen</li>
+            <img src="./examples/assets/web-page-final.JPG" alt="web-page-final">
+          </section>
+        </section>
+        <section>
+          <h2>Thanks for attention</h2>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
